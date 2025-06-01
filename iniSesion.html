@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio Sesión</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css">
+  <style>
+    body, html {
+      height: 100%;
+      background-color: #f8f9fa;
+    }
+    .login-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    .login-box {
+      width: 100%;
+      max-width: 400px;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .form-control::placeholder {
+      color: #6c757d;
+    }
+    .login-btn {
+      border-radius: 2rem;
+    }
+    .forgot-password {
+      text-align: right;
+      display: block;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <h4 class="mb-4 text-center">Inicio Sesión</h4>
+      <form>
+        <div class="mb-3">
+          <label for="username" class="form-label">Usuario</label>
+          <input type="text" class="form-control" id="username" placeholder="Nombre de Usuario">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="password" placeholder="Contraseña">
+        </div>
+        <div class="mb-3 form-check d-flex justify-content-between align-items-center">
+          <div>
+            <input type="checkbox" class="form-check-input" id="remember">
+            <label class="form-check-label" for="remember">Recordar Información</label>
+          </div>
+          <a href="#" class="text-decoration-none forgot-password">¿Olvidaste tu contraseña?</a>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 login-btn">Iniciar Sesión</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
