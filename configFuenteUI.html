@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Configuración - Color UI</title>
+  <title>Configuración - Fuente UI</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
   <style>
@@ -15,78 +15,34 @@
 
     .content-area {
       padding: 2rem;
+    }
+
+    .search-bar {
       display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
       flex-wrap: wrap;
+    }
+
+    .search-bar input {
+      border-radius: 30px;
+      padding-left: 1rem;
+      flex-grow: 1;
+      max-width: 400px;
+    }
+
+    .search-bar button {
+      border-radius: 30px;
+      padding: 0.5rem 1.5rem;
+    }
+
+    .font-options {
+      display: flex;
       gap: 2rem;
-      align-items: center;
-    }
-
-    .img-preview {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .img-small {
-      width: 120px;
-      height: 120px;
-      border: 2px solid #000;
-      border-radius: 12px;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .img-large {
-      width: 240px;
-      height: 240px;
-      border: 2px solid #000;
-      border-radius: 24px;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .color-box {
-      background: #f8f9fa;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      font-family: monospace;
-    }
-
-    .placeholder-icon {
-      width: 80%;
-      height: 80%;
-      border: 1px solid #000;
-      position: relative;
-    }
-
-    .placeholder-icon::before,
-    .placeholder-icon::after {
-      content: '';
-      position: absolute;
-      background: transparent;
-      border: 1px solid #000;
-    }
-
-    .placeholder-icon::before {
-      top: 10%;
-      left: 10%;
-      width: 15%;
-      height: 15%;
-      border-radius: 50%;
-    }
-
-    .placeholder-icon::after {
-      bottom: 10%;
-      right: 10%;
-      width: 70%;
-      height: 1px;
-      transform: rotate(-45deg);
-      transform-origin: bottom right;
+      flex-wrap: wrap;
+      justify-content: start;
     }
 
     @media (max-width: 768px) {
@@ -95,9 +51,12 @@
         border-bottom: 1px solid #dee2e6;
       }
 
+      .font-options {
+        justify-content: center;
+      }
+
       .content-area {
-        flex-direction: column;
-        align-items: center;
+        padding: 1rem;
       }
     }
   </style>
@@ -135,25 +94,34 @@
       <nav class="col-md-2 sidebar bg-white">
         <ul class="nav flex-column">
           <li class="nav-item"><a class="nav-link" href="configUsuario.html">Datos Usuario</a></li>
-          <li class="nav-item"><a class="nav-link active" href="#">Color UI</a></li>
+          <li class="nav-item"><a class="nav-link" href="configColorUI.html">Color UI</a></li>
           <li class="nav-item"><a class="nav-link" href="configTemaUI.html">Temas</a></li>
-          <li class="nav-item"><a class="nav-link" href="configFuenteUI.html">Fuente</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Fuente</a></li>
         </ul>
       </nav>
 
       <!-- CONTENIDO PRINCIPAL -->
       <main class="col-md-10 content-area">
-        <!-- Imagen pequeña + código de color -->
-        <div class="img-preview text-center">
-          <div class="img-small">
-            <div class="placeholder-icon"></div>
-          </div>
-          <div class="color-box">#FFFFFF</div>
+        <!-- BARRA DE BÚSQUEDA -->
+        <div class="search-bar">
+          <input type="text" class="form-control" placeholder="Buscabas una fuente de letra en especial?">
+          <button class="btn btn-primary">Buscar</button>
         </div>
 
-        <!-- Imagen grande -->
-        <div class="img-large">
-          <div class="placeholder-icon"></div>
+        <!-- Opciones de fuente -->
+        <div class="font-options">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="fuenteUI" id="fuente1" checked>
+            <label class="form-check-label" for="fuente1">Fuente</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="fuenteUI" id="fuente2">
+            <label class="form-check-label" for="fuente2">Fuente</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="fuenteUI" id="fuente3">
+            <label class="form-check-label" for="fuente3">Fuente</label>
+          </div>
         </div>
       </main>
     </div>

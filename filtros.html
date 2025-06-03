@@ -69,22 +69,16 @@
       </button>
       <div class="collapse navbar-collapse" id="topNavbar">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="#">Noticias</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Categorías</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Filtros</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Filtro 1</a></li>
-              <li><a class="dropdown-item" href="#">Filtro 2</a></li>
-            </ul>
-          </li>
+          <li class="nav-item"><a class="nav-link" href="noticias.html">Noticias</a></li>
+          <li class="nav-item"><a class="nav-link" href="categorias.html">Categorías</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Filtros</a></li>
         </ul>
         <div class="d-flex align-items-center gap-3">
           <div class="position-relative">
             <i class="bi bi-bell fs-5"></i>
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">9</span>
           </div>
-          <i class="bi bi-gear fs-5"></i>
+          <a href="configUsuario.html"><i class="bi bi-gear fs-5"></i></a>
           <i class="bi bi-person-circle fs-4"></i>
         </div>
       </div>
@@ -109,7 +103,7 @@
       <main class="col-md-10 content-area">
         <!-- BARRA DE BÚSQUEDA -->
         <div class="search-bar">
-          <input type="text" class="form-control" placeholder="Buscabas una noticia en especial?">
+          <input type="text" class="form-control" placeholder="Buscabas un filtro en especial?">
           <button class="btn btn-primary">Buscar</button>
         </div>
 
