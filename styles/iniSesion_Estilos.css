@@ -22,6 +22,11 @@ body, html {
     .login-btn {
       border-radius: 2rem;
     }
+    .create-user {
+      text-align: center;
+      display: block;
+      margin-top: 0.5rem;
+    }
     .forgot-password {
       text-align: right;
       display: block;
