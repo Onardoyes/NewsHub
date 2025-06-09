@@ -1,12 +1,16 @@
+<?php
+  require '../config/validarSesion.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Configuración - Modifcar Datos de Usuario</title>
+  <title>Configuración - Información Usuario</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="styles/configUsuarioPass_Estilos.css">
+  <link rel="stylesheet" href="../styles/configUsuario_Estilos.css">
 </head>
 <body>
   <!-- NAVBAR SUPERIOR -->
@@ -18,9 +22,9 @@
       </button>
       <div class="collapse navbar-collapse" id="topNavbar">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="noticias.html">Noticias</a></li>
-          <li class="nav-item"><a class="nav-link" href="categorias.html">Categorías</a></li>
-          <li class="nav-item"><a class="nav-link" href="filtros.html">Filtros</a></li>
+          <li class="nav-item"><a class="nav-link" href="noticias.php">Noticias</a></li>
+          <li class="nav-item"><a class="nav-link" href="categorias.php">Categorías</a></li>
+          <li class="nav-item"><a class="nav-link" href="filtros.php">Filtros</a></li>
         </ul>
         <div class="d-flex align-items-center gap-3">
           <div class="position-relative">
@@ -40,28 +44,37 @@
       <!-- MENÚ LATERAL IZQUIERDO -->
       <nav class="col-md-2 sidebar bg-white">
         <ul class="nav flex-column">
-          <li class="nav-item"><a class="nav-link active" href="configUsuario.html">Datos Usuario</a></li>
-          <li class="nav-item"><a class="nav-link" href="configColorUI.html">Color UI</a></li>
-          <li class="nav-item"><a class="nav-link" href="configTemaUI.html">Temas</a></li>
-          <li class="nav-item"><a class="nav-link" href="configFuenteUI.html">Fuente</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Datos Usuario</a></li>
+          <li class="nav-item"><a class="nav-link" href="configColorUI.php">Color UI</a></li>
+          <li class="nav-item"><a class="nav-link" href="configTemaUI.php">Temas</a></li>
+          <li class="nav-item"><a class="nav-link" href="configFuenteUI.php">Fuente</a></li>
         </ul>
       </nav>
 
       <!-- CONTENIDO PRINCIPAL -->
       <main class="col-md-10 content-area">
         <div class="profile-card mx-auto col-lg-8">
-            <h5 class="fw-bold mb-4">Modificar Contraseña</h5>
-            <form class="form-container">
-            <div class="mb-3">
-                <label for="pass1" class="form-label">Contraseña Actual</label>
-                <input type="password" class="form-control" id="pass1" placeholder="Contraseña Actual">
+          <h5 class="fw-bold mb-4">Información de Usuario</h5>
+
+          <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-4">
+            <!-- Imagen -->
+            <div class="profile-image">
+              <i class="bi bi-image"></i>
             </div>
-            <div class="mb-3">
-                <label for="pass2" class="form-label">Nueva Contraseña</label>
-                <input type="password" class="form-control" id="pass2" placeholder="Nueva Contraseña">
+
+            <!-- Info -->
+            <div class="info-labels">
+              <p><strong>Nombre:</strong></p>
+              <p><strong>Correo:</strong></p>
+              <button class="btn btn-primary" onclick="location.href='configUsuarioDatos.php'">Cambiar Datos</button>
             </div>
-                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-            </form>
+          </div>
+
+          <!-- Botones -->
+          <div class="profile-buttons d-flex flex-column flex-md-row justify-content-center">
+            <button class="btn btn-primary">Cambiar Foto de Perfil</button>
+            <button class="btn btn-primary" onclick="location.href='configUsuarioPass.php'">Cambiar Contraseña</button>
+          </div>
         </div>
       </main>
     </div>

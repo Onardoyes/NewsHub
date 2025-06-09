@@ -1,3 +1,7 @@
+<?php
+  require '../config/validarSesion.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,7 +10,7 @@
   <title>Configuración - Modifcar Datos de Usuario</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="styles/configUsuarioDatos_Estilos.css">
+  <link rel="stylesheet" href="../styles/configUsuarioDatos_Estilos.css">
 </head>
 <body>
   <!-- NAVBAR SUPERIOR -->
@@ -18,9 +22,9 @@
       </button>
       <div class="collapse navbar-collapse" id="topNavbar">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="noticias.html">Noticias</a></li>
-          <li class="nav-item"><a class="nav-link" href="categorias.html">Categorías</a></li>
-          <li class="nav-item"><a class="nav-link" href="filtros.html">Filtros</a></li>
+          <li class="nav-item"><a class="nav-link" href="noticias.php">Noticias</a></li>
+          <li class="nav-item"><a class="nav-link" href="categorias.php">Categorías</a></li>
+          <li class="nav-item"><a class="nav-link" href="filtros.php">Filtros</a></li>
         </ul>
         <div class="d-flex align-items-center gap-3">
           <div class="position-relative">
@@ -40,10 +44,10 @@
       <!-- MENÚ LATERAL IZQUIERDO -->
       <nav class="col-md-2 sidebar bg-white">
         <ul class="nav flex-column">
-          <li class="nav-item"><a class="nav-link active" href="configUsuario.html">Datos Usuario</a></li>
-          <li class="nav-item"><a class="nav-link" href="configColorUI.html">Color UI</a></li>
-          <li class="nav-item"><a class="nav-link" href="configTemaUI.html">Temas</a></li>
-          <li class="nav-item"><a class="nav-link" href="configFuenteUI.html">Fuente</a></li>
+          <li class="nav-item"><a class="nav-link active" href="configUsuario.php">Datos Usuario</a></li>
+          <li class="nav-item"><a class="nav-link" href="configColorUI.php">Color UI</a></li>
+          <li class="nav-item"><a class="nav-link" href="configTemaUI.php">Temas</a></li>
+          <li class="nav-item"><a class="nav-link" href="configFuenteUI.php">Fuente</a></li>
         </ul>
       </nav>
 

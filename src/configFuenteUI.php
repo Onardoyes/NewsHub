@@ -1,12 +1,16 @@
+<?php
+  require '../config/validarSesion.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Inicio - Filtros</title>
+  <title>Configuración - Fuente UI</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="styles/filtros_Estilos.css">
+  <link rel="stylesheet" href="../styles/configFuenteUI_Estilos.css">
 </head>
 <body>
   <!-- NAVBAR SUPERIOR -->
@@ -18,16 +22,16 @@
       </button>
       <div class="collapse navbar-collapse" id="topNavbar">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="noticias.html">Noticias</a></li>
-          <li class="nav-item"><a class="nav-link" href="categorias.html">Categorías</a></li>
-          <li class="nav-item"><a class="nav-link active" href="#">Filtros</a></li>
+          <li class="nav-item"><a class="nav-link" href="noticias.php">Noticias</a></li>
+          <li class="nav-item"><a class="nav-link" href="categorias.php">Categorías</a></li>
+          <li class="nav-item"><a class="nav-link" href="filtros.php">Filtros</a></li>
         </ul>
         <div class="d-flex align-items-center gap-3">
           <div class="position-relative">
             <i class="bi bi-bell fs-5"></i>
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">9</span>
           </div>
-          <a href="configUsuario.html"><i class="bi bi-gear fs-5"></i></a>
+          <a href="#"><i class="bi bi-gear fs-5"></i></a>
           <i class="bi bi-person-circle fs-4"></i>
         </div>
       </div>
@@ -40,11 +44,10 @@
       <!-- MENÚ LATERAL IZQUIERDO -->
       <nav class="col-md-2 sidebar bg-white">
         <ul class="nav flex-column">
-          <li class="nav-item"><a class="nav-link" href="#">Populares</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Recientes</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Último Momento</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Favoritos</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">El Mundo</a></li>
+          <li class="nav-item"><a class="nav-link" href="configUsuario.php">Datos Usuario</a></li>
+          <li class="nav-item"><a class="nav-link" href="configColorUI.php">Color UI</a></li>
+          <li class="nav-item"><a class="nav-link" href="configTemaUI.php">Temas</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Fuente</a></li>
         </ul>
       </nav>
 
@@ -55,31 +58,23 @@
           <div class="d-flex align-items-center" style="width: 100%; max-width: 600px;">
             <input type="text" class="form-control me-2" placeholder="Buscabas una noticia en especial?">
             <button class="btn btn-primary me-2">Buscar</button>
-            <button class="btn btn-outline-primary">Aplicar Filtros</button>
+            <button class="btn btn-outline-primary">Aplicar Fuente</button>
           </div>
         </div>
 
-        <!-- FILTROS -->
-        <div class="filtros-box">
+        <!-- Opciones de fuente -->
+        <div class="font-options">
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="filtro1">
-            <label class="form-check-label" for="filtro1">Filtro</label>
+            <input class="form-check-input" type="radio" name="fuenteUI" id="fuente1" checked>
+            <label class="form-check-label" for="fuente1">Fuente</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="filtro2">
-            <label class="form-check-label" for="filtro2">Filtro</label>
+            <input class="form-check-input" type="radio" name="fuenteUI" id="fuente2">
+            <label class="form-check-label" for="fuente2">Fuente</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="filtro3">
-            <label class="form-check-label" for="filtro3">Filtro</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="filtro4">
-            <label class="form-check-label" for="filtro4">Filtro</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="filtro5">
-            <label class="form-check-label" for="filtro5">Filtro</label>
+            <input class="form-check-input" type="radio" name="fuenteUI" id="fuente3">
+            <label class="form-check-label" for="fuente3">Fuente</label>
           </div>
         </div>
       </main>

@@ -1,12 +1,16 @@
+<?php
+  require '../config/validarSesion.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Inicio - Categorías</title>
+  <title>Inicio - Noticias</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="styles/categorias_Estilos.css">
+  <link rel="stylesheet" href="../styles/noticias_Estilos.css">
 </head>
 <body>
   <!-- NAVBAR SUPERIOR -->
@@ -18,17 +22,19 @@
       </button>
       <div class="collapse navbar-collapse" id="topNavbar">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="noticias.html">Noticias</a></li>
-          <li class="nav-item"><a class="nav-link active" href="#">Categorías</a></li>
-          <li class="nav-item"><a class="nav-link" href="filtros.html">Filtros</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Noticias</a></li>
+          <li class="nav-item"><a class="nav-link" href="categorias.php">Categorias</a></li>
+          <li class="nav-item"><a class="nav-link" href="filtros.php">Filtros</a></li>
         </ul>
         <div class="d-flex align-items-center gap-3">
           <div class="position-relative">
             <i class="bi bi-bell fs-5"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">9</span>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              9
+            </span>
           </div>
-          <a href="configUsuario.html"><i class="bi bi-gear fs-5"></i></a>
-          <i class="bi bi-person-circle fs-4"></i>
+          <a href="configUsuario.php"><i class="bi bi-gear fs-5"></i></a>
+          <a href="../config/logout.php"><i class="bi bi-person-circle fs-4"></i></a>
         </div>
       </div>
     </div>
@@ -42,7 +48,7 @@
         <ul class="nav flex-column">
           <li class="nav-item"><a class="nav-link" href="#">Populares</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Recientes</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Último Momento</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Ultimo Momento</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Favoritos</a></li>
           <li class="nav-item"><a class="nav-link" href="#">El Mundo</a></li>
         </ul>
@@ -52,26 +58,24 @@
       <main class="col-md-10 content-area">
         <!-- BARRA DE BÚSQUEDA -->
         <div class="search-bar">
-          <input type="text" class="form-control" placeholder="Buscabas una categoria en especial?">
+          <input type="text" class="form-control" placeholder="Buscabas una noticia en especial?">
           <button class="btn btn-primary">Buscar</button>
         </div>
 
-        <!-- GRID DE CATEGORÍAS -->
-        <div class="categories-grid">
-          <div class="card-category">
-            <img src="https://via.placeholder.com/100x100?text=%F0%9F%93%9D" alt="Categoria">
-            <small class="text-muted">Categoría</small>
-            <p class="fw-bold">Categoria</p>
+        <!-- Tarjetas de Noticias -->
+        <div class="news-card d-flex align-items-center gap-3">
+          <img src="https://via.placeholder.com/48" class="img-thumbnail" alt="img">
+          <div>
+            <h6 class="mb-0">Title</h6>
+            <strong>Noticia</strong>
           </div>
-          <div class="card-category">
-            <img src="https://via.placeholder.com/100x100?text=%F0%9F%93%9D" alt="Categoria">
-            <small class="text-muted">Categoría</small>
-            <p class="fw-bold">Categoria</p>
-          </div>
-          <div class="card-category">
-            <img src="https://via.placeholder.com/100x100?text=%F0%9F%93%9D" alt="Categoria">
-            <small class="text-muted">Categoría</small>
-            <p class="fw-bold">Categoria</p>
+        </div>
+
+        <div class="news-card d-flex align-items-center gap-3">
+          <img src="https://via.placeholder.com/48" class="img-thumbnail" alt="img">
+          <div>
+            <h6 class="mb-0">Title</h6>
+            <strong>Noticia</strong>
           </div>
         </div>
       </main>
