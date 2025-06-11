@@ -1,5 +1,9 @@
 <?php
   require '../config/validarSesion.php';
+  
+  if (!isset($_SESSION['tema'])) {
+    $_SESSION['tema'] = 'claro'; // Valor por defecto
+  }
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +16,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="../styles/configUsuarioDatos_Estilos.css">
 </head>
-<body>
+<body class="tema-<?php echo $_SESSION['tema']; ?>">
   <!-- NAVBAR SUPERIOR -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div class="container-fluid">

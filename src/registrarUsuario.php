@@ -11,7 +11,7 @@
   <div class="login-container">
     <div class="login-box">
       <h4 class="mb-4 text-center">Crear Cuenta</h4>
-      <form method="post">
+      <form action="../config/guardarUsuario.php" method="POST">
         <div class="mb-3">
           <label for="username" class="form-label">Usuario</label>
           <input type="text" class="form-control" id="username" name="usuario" placeholder="Nombre de Usuario">

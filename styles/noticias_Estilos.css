@@ -47,3 +47,57 @@
         border-bottom: 1px solid #dee2e6;
       }
     }
+
+/* Tema Claro */
+body.tema-claro {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Tema Oscuro */
+body.tema-oscuro {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.tema-oscuro .navbar,
+body.tema-oscuro .sidebar,
+body.tema-oscuro .content-area,
+body.tema-oscuro .filtros-box,
+body.tema-oscuro .form-check-label,
+body.tema-oscuro input.form-check-input {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+  border-color: #444;
+}
+
+body.tema-oscuro .navbar .nav-link,
+body.tema-oscuro .navbar .navbar-brand {
+  color: #ffffff !important;
+}
+
+body.tema-oscuro .navbar .nav-link:hover {
+  color: #cccccc !important;
+}
+
+body.tema-oscuro .form-check-input:checked {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+body.tema-oscuro input[type="text"],
+body.tema-oscuro button {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border-color: #444;
+}
+
+body.tema-oscuro .btn-outline-primary {
+  color: #ffffff;
+  border-color: #0d6efd;
+}
+
+body.tema-oscuro .btn-outline-primary:hover {
+  background-color: #0d6efd;
+  color: #fff;
+}

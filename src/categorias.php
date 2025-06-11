@@ -1,5 +1,9 @@
 <?php
   require '../config/validarSesion.php';
+
+  if (!isset($_SESSION['tema'])) {
+    $_SESSION['tema'] = 'claro'; // Valor por defecto si no se ha configurado
+  }
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +16,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="../styles/categorias_Estilos.css">
 </head>
-<body>
+<body class="tema-<?php echo $_SESSION['tema']; ?>">
   <!-- NAVBAR SUPERIOR -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div class="container-fluid">
@@ -26,7 +30,7 @@
           <li class="nav-item"><a class="nav-link active" href="#">Categorías</a></li>
           <li class="nav-item"><a class="nav-link" href="filtros.php">Filtros</a></li>
         </ul>
-        <div class="d-flex align-items-center gap-3">
+        <div class="d-flex align-items-center gap-3 navbar-right">
           <div class="position-relative">
             <i class="bi bi-bell fs-5"></i>
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">9</span>
@@ -63,17 +67,17 @@
         <!-- GRID DE CATEGORÍAS -->
         <div class="categories-grid">
           <div class="card-category">
-            <img src="https://via.placeholder.com/100x100?text=%F0%9F%93%9D" alt="Categoria">
+            <!--<img src="https://via.placeholder.com/100x100?text=%F0%9F%93%9D" alt="Categoria">-->
             <small class="text-muted">Categoría</small>
             <p class="fw-bold">Categoria</p>
           </div>
           <div class="card-category">
-            <img src="https://via.placeholder.com/100x100?text=%F0%9F%93%9D" alt="Categoria">
+            <!--<img src="https://via.placeholder.com/100x100?text=%F0%9F%93%9D" alt="Categoria">-->
             <small class="text-muted">Categoría</small>
             <p class="fw-bold">Categoria</p>
           </div>
           <div class="card-category">
-            <img src="https://via.placeholder.com/100x100?text=%F0%9F%93%9D" alt="Categoria">
+            <!--<img src="https://via.placeholder.com/100x100?text=%F0%9F%93%9D" alt="Categoria">-->
             <small class="text-muted">Categoría</small>
             <p class="fw-bold">Categoria</p>
           </div>

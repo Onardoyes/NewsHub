@@ -1,80 +1,129 @@
 .sidebar {
-      min-height: 100vh;
-      border-right: 1px solid #dee2e6;
-      padding-top: 1rem;
-    }
+  min-height: 100vh;
+  border-right: 1px solid #dee2e6;
+  padding-top: 1rem;
+}
 
-    .content-area {
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 3rem;
-    }
+.content-area {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
 
-    .theme-option {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+.theme-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
 
-    .theme-image {
-      width: 100%;
-      max-width: 360px;
-      height: 180px;
-      border: 2px solid #000;
-      border-radius: 24px;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+.theme-image {
+  width: 100%;
+  max-width: 360px;
+  height: 180px;
+  border: 2px solid #000;
+  border-radius: 24px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    .placeholder-icon {
-      width: 80%;
-      height: 80%;
-      border: 1px solid #000;
-      position: relative;
-    }
+.placeholder-icon {
+  width: 80%;
+  height: 80%;
+  border: 1px solid #000;
+  position: relative;
+}
 
-    .placeholder-icon::before,
-    .placeholder-icon::after {
-      content: '';
-      position: absolute;
-      background: transparent;
-      border: 1px solid #000;
-    }
+.placeholder-icon::before,
+.placeholder-icon::after {
+  content: '';
+  position: absolute;
+  background: transparent;
+  border: 1px solid #000;
+}
 
-    .placeholder-icon::before {
-      top: 10%;
-      left: 10%;
-      width: 15%;
-      height: 15%;
-      border-radius: 50%;
-    }
+.placeholder-icon::before {
+  top: 10%;
+  left: 10%;
+  width: 15%;
+  height: 15%;
+  border-radius: 50%;
+}
 
-    .placeholder-icon::after {
-      bottom: 10%;
-      right: 10%;
-      width: 70%;
-      height: 1px;
-      transform: rotate(-45deg);
-      transform-origin: bottom right;
-    }
+.placeholder-icon::after {
+  bottom: 10%;
+  right: 10%;
+  width: 70%;
+  height: 1px;
+  transform: rotate(-45deg);
+  transform-origin: bottom right;
+}
 
-    @media (max-width: 768px) {
-      .sidebar {
-        border-right: none;
-        border-bottom: 1px solid #dee2e6;
-      }
+@media (max-width: 768px) {
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid #dee2e6;
+  }
 
-      .theme-option {
-        flex-direction: column;
-        align-items: center;
-      }
+  .theme-option {
+    flex-direction: column;
+    align-items: center;
+  }
 
-      .content-area {
-        padding: 1rem;
-      }
-    }
+  .content-area {
+    padding: 1rem;
+  }
+}
+
+/* Tema Claro */
+body.tema-claro {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Tema Oscuro */
+body.tema-oscuro {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.tema-oscuro .navbar,
+body.tema-oscuro .sidebar,
+body.tema-oscuro .content-area,
+body.tema-oscuro .news-card {
+  background-color: #1e1e1e !important;
+  color: #ffffff;
+  border-color: #444;
+}
+
+/* Color del texto en navbar lado izquierdo */
+body.tema-oscuro .navbar .navbar-brand,
+body.tema-oscuro .navbar .nav-link {
+  color: #ffffff !important;
+}
+
+body.tema-oscuro .navbar .nav-link:hover {
+  color: #cccccc !important;
+}
+
+/* Iconos y badges también visibles en oscuro */
+body.tema-oscuro .bi,
+body.tema-oscuro .badge {
+  color: #ffffff;
+}
+
+body.tema-oscuro .badge.bg-danger {
+  background-color: #ff4d4d !important;
+}
+
+/* Búsqueda */
+body.tema-oscuro .search-bar input,
+body.tema-oscuro .search-bar button {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border-color: #444;
+}

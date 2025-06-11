@@ -1,5 +1,19 @@
 <?php
   require '../config/validarSesion.php';
+  require '../BD/conexion.php';
+
+  $idUsuario = $_SESSION['id_usuario'];
+  $temaUI = 'claro'; // valor por defecto
+
+  $sql = "SELECT Tema FROM usuario WHERE id = ?";
+  $stmt = $conexion->prepare($sql);
+  $stmt->bind_param("i", $idUsuario);
+  $stmt->execute();
+  $stmt->bind_result($temaGuardado);
+  if ($stmt->fetch()) {
+    $temaUI = $temaGuardado;
+  }
+  $stmt->close();
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +26,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="../styles/configTemaUI_Estilos.css">
 </head>
-<body>
+<body class="<?php echo $temaUI === 'oscuro' ? 'tema-oscuro' : 'tema-claro'; ?>">
   <!-- NAVBAR SUPERIOR -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div class="container-fluid">
@@ -79,5 +93,6 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/tema.js"></script>
 </body>
 </html>
