@@ -48,11 +48,13 @@
       <!-- MENÚ LATERAL IZQUIERDO -->
       <nav class="col-md-2 sidebar bg-white">
         <ul class="nav flex-column">
-          <li class="nav-item"><a class="nav-link" href="#">Populares</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Recientes</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Último Momento</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Favoritos</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">El Mundo</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Ciencia</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Deportes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Entretenimiento</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">General</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Negocios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Salud</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Tecnología</a></li>
         </ul>
       </nav>
 
@@ -67,19 +69,44 @@
         <!-- GRID DE CATEGORÍAS -->
         <div class="categories-grid">
           <div class="card-category">
-            <!--<img src="https://via.placeholder.com/100x100?text=%F0%9F%93%9D" alt="Categoria">-->
-            <small class="text-muted">Categoría</small>
-            <p class="fw-bold">Categoria</p>
+            <img src="../img/ciencia.png" alt="Ciencia">
+            <p class="fw-bold">Ciencia</p>
+            <small>Noticias sobre descubrimientos científicos, investigaciones, tecnología espacial, medio ambiente, y estudios innovadores en diversas ramas de la ciencia.</small>
           </div>
           <div class="card-category">
-            <!--<img src="https://via.placeholder.com/100x100?text=%F0%9F%93%9D" alt="Categoria">-->
-            <small class="text-muted">Categoría</small>
-            <p class="fw-bold">Categoria</p>
+            <img src="../img/deportes.png" alt="Deportes">
+            <p class="fw-bold">Deportes</p>
+            <small>Actualizaciones sobre eventos deportivos, resultados, análisis, atletas, ligas, campeonatos y todo lo relacionado con el mundo del deporte.</small>
           </div>
           <div class="card-category">
-            <!--<img src="https://via.placeholder.com/100x100?text=%F0%9F%93%9D" alt="Categoria">-->
-            <small class="text-muted">Categoría</small>
-            <p class="fw-bold">Categoria</p>
+            <img src="../img/entretenimiento.png" alt="Entretenimiento">
+            <p class="fw-bold">Entretenimiento</p>
+            <small>Cobertura de temas del mundo del espectáculo como cine, música, televisión, celebridades, eventos culturales y lanzamientos artísticos.</small>
+          </div>
+          <div class="card-category">
+            <img src="../img/general.png" alt="General">
+            <p class="fw-bold">General</p>
+            <small>Incluye una variedad de noticias que no pertenecen a una categoría específica; puede abarcar política, sociedad, clima, sucesos y temas de interés público.</small>
+          </div>
+          <div class="card-category">
+            <img src="../img/negocios.png" alt="Negocios">
+            <p class="fw-bold">Negocios</p>
+            <small>Noticias relacionadas con la economía, finanzas, mercados, empresas, emprendimiento y tendencias comerciales a nivel nacional e internacional.</small>
+          </div>
+          <div class="card-category">
+            <img src="../img/popular.png" alt="Populares">
+            <p class="fw-bold">Populares</p>
+            <small>Noticias destacadas por su alta relevancia, viralidad o interés entre el público. Suelen ser las más vistas, compartidas o comentadas en un periodo reciente.</small>
+          </div>
+          <div class="card-category">
+            <img src="../img/salud.png" alt="Salud">
+            <p class="fw-bold">Salud</p>
+            <small>Información sobre medicina, bienestar, enfermedades, avances en tratamientos, nutrición, salud pública y temas médicos de actualidad.</small>
+          </div>
+          <div class="card-category">
+            <img src="../img/tecnologia.png" alt="Negocios">
+            <p class="fw-bold">Tecnología</p>
+            <small>Noticias sobre avances tecnológicos, dispositivos, software, inteligencia artificial, redes sociales, ciberseguridad e innovación digital.</small>
           </div>
         </div>
       </main>

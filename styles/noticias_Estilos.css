@@ -16,8 +16,10 @@
     }
 
     .news-card img {
-      width: 48px;
-      height: 48px;
+      width: 90px !important;
+      height: 90px !important;
+      object-fit: cover;
+      border-radius: 8px;
     }
 
     .search-bar {
@@ -52,6 +54,16 @@
 body.tema-claro {
   background-color: #ffffff;
   color: #000000;
+}
+
+body.tema-claro .news-card,
+body.tema-claro .news-card * {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.tema-claro .news-card *:hover {
+  color: #6e6d6d !important;
 }
 
 /* Tema Oscuro */
@@ -100,4 +112,30 @@ body.tema-oscuro .btn-outline-primary {
 body.tema-oscuro .btn-outline-primary:hover {
   background-color: #0d6efd;
   color: #fff;
+}
+
+body.tema-oscuro .news-card,
+body.tema-oscuro .news-card * {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+  border-color: #444 !important;
+}
+
+body.tema-oscuro .news-card a {
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+body.tema-oscuro .news-card *:hover {
+  color: #ccc !important;
+}
+
+/* Aplica color claro a todo el contenido de news-card en tema oscuro */
+body.tema-oscuro .news-card,
+body.tema-oscuro .news-card h6,
+body.tema-oscuro .news-card p,
+body.tema-oscuro .news-card a {
+  color: #f1f1f1 !important;
+  background-color: #1e1e1e !important;
+  border-color: #444 !important;
 }
