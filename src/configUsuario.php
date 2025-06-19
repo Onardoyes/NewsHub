@@ -20,7 +20,9 @@
   <!-- NAVBAR SUPERIOR -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Logo</a>
+      <a class="navbar-brand" href="#">
+        <img src="../img/<?php echo ($_SESSION['tema'] == 'claro') ? 'logo.png' : 'logoOscuro.png'; ?>" id="logo-img" alt="Logo">
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -33,15 +35,16 @@
         <div class="d-flex align-items-center gap-3">
           <div class="position-relative">
             <i class="bi bi-bell fs-5"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">9</span>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              9
+            </span>
           </div>
-          <a href="#"><i class="bi bi-gear fs-5"></i></a>
-          <i class="bi bi-person-circle fs-4"></i>
+          <a href="configUsuario.php"><i class="bi bi-gear fs-5"></i></a>
+          <a href="../config/logout.php"><i class="bi bi-person-circle fs-4" title="Cerrar Sesión"></i></a>
         </div>
       </div>
     </div>
   </nav>
-
   <!-- LAYOUT PRINCIPAL -->
   <div class="container-fluid">
     <div class="row">

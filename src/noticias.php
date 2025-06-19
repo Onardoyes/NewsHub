@@ -1,6 +1,6 @@
 <?php
   require '../config/validarSesion.php';
-  
+
   if (!isset($_SESSION['tema'])) {
     $_SESSION['tema'] = 'claro'; // Valor por defecto
   }
@@ -21,14 +21,16 @@
   <!-- NAVBAR SUPERIOR -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Logo</a>
+      <a class="navbar-brand" href="#">
+        <img src="../img/<?php echo ($_SESSION['tema'] == 'claro') ? 'logo.png' : 'logoOscuro.png'; ?>" id="logo-img" alt="Logo">
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="topNavbar">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="noticias.php">Noticias</a></li>
-          <li class="nav-item"><a class="nav-link" href="categorias.php">Categorias</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">Noticias</a></li>
+          <li class="nav-item"><a class="nav-link" href="categorias.php">Categorías</a></li>
           <li class="nav-item"><a class="nav-link" href="filtros.php">Filtros</a></li>
         </ul>
         <div class="d-flex align-items-center gap-3">
@@ -56,23 +58,20 @@
           <li class="nav-item"><a class="nav-link" href="noticias.php?categoria=entertainment">Entretenimiento</a></li>
           <li class="nav-item"><a class="nav-link" href="noticias.php?categoria=general">General</a></li>
           <li class="nav-item"><a class="nav-link" href="noticias.php?categoria=business">Negocios</a></li>
+          <li class="nav-item"><a class="nav-link" href="noticias.php">Populares</a></li>
           <li class="nav-item"><a class="nav-link" href="noticias.php?categoria=health">Salud</a></li>
           <li class="nav-item"><a class="nav-link" href="noticias.php?categoria=technology">Tecnología</a></li>
         </ul>
       </nav>
-
       <!-- CONTENIDO PRINCIPAL -->
       <main class="col-md-10 content-area">
         <!-- BARRA DE BÚSQUEDA -->
-        <div class="search-bar">
-          <form action="../config/buscarNoticia.php" method="GET">
-            <input type="text" class="form-control" placeholder="Buscabas una noticia en especial?">
-            <button type="submit" class="btn btn-primary">Buscar</button>
-          </form>
-        </div>
-
+        <form method="GET" action="noticias.php" class="search-bar">
+          <input type="text" name="busqueda" class="form-control" placeholder="Buscabas una noticia en especial?">
+          <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
         <!-- Tarjetas de Noticias -->
-        <div id="news"></div>        
+        <div id="news"></div>
       </main>
     </div>
   </div>
