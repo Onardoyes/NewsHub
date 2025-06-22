@@ -2,8 +2,15 @@
   require '../config/validarSesion.php';
 
   if (!isset($_SESSION['tema'])) {
-    $_SESSION['tema'] = 'claro'; // Valor por defecto si no se ha configurado
+    $_SESSION['tema'] = 'claro';
   }
+
+  $colorNavUp    = $_SESSION['navUp'] ?? '#ffffff';
+  $colorNavLeft  = $_SESSION['navLeft'] ?? '#f8f9fa';
+  $colorFuente   = $_SESSION['fuenteColor'] ?? '#000000';
+  $colorBoton    = $_SESSION['botonColor'] ?? '#0d6efd';
+  $colorHover    = $_SESSION['hoverColor'] ?? '#0a58ca';
+  $fuenteActual = $_SESSION['fuenteNombre'] ?? 'Arial, Helvetica, sans-serif';
 ?>
 
 <!DOCTYPE html>
@@ -14,11 +21,196 @@
   <title>Inicio - Categorías</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="../styles/categorias_Estilos.css">
+  <style>
+    /* Logo */
+    #logo-img {
+      height: 100%;
+      max-height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    body, .nav-link, .navbar-brand, p {
+      color: <?php echo $colorFuente; ?> !important;
+      font-family: <?php echo $fuenteActual; ?>;
+    }
+
+    .navbar {
+      background-color: <?php echo $colorNavUp; ?> !important;
+      font-family: <?php echo $fuenteActual; ?>;
+    }
+
+    .sidebar {
+      background-color: <?php echo $colorNavLeft; ?> !important;
+      min-height: 100vh;
+      border-right: 1px solid #dee2e6;
+      padding-top: 1rem;
+      font-family: <?php echo $fuenteActual; ?>;
+    }
+
+    /* Contenido */
+    .content-area {
+      padding: 2rem;
+    }
+
+    /* Barra de búsqueda */
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .search-bar input {
+      border-radius: 30px;
+      padding-left: 1rem;
+      flex-grow: 1;
+      max-width: 400px;
+    }
+
+    .search-bar button {
+      border-radius: 30px;
+      padding: 0.5rem 1.5rem;
+    }
+
+    /* Tarjetas de categorías */
+    .categories-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .card-category {
+      text-align: center;
+      border: 1px solid #dee2e6;
+      border-radius: 12px;
+      padding: 1rem;
+      width: 180px;
+      background-color: #ffffff;
+      color: #212529;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card-category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-category img {
+      width: 100%;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sidebar {
+        border-right: none;
+        border-bottom: 1px solid #dee2e6;
+      }
+
+      .card-category {
+        width: 100%;
+        max-width: 250px;
+      }
+
+      .content-area {
+        padding: 1rem;
+      }
+    }
+
+    /* Tema Claro */
+    body.tema-claro {
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    /* Tema Oscuro */
+    body.tema-oscuro {
+      background-color: #121212;
+      color: #ffffff;
+    }
+
+    body.tema-oscuro .content-area,
+    body.tema-oscuro .form-control,
+    body.tema-oscuro .card-category {
+      background-color: #1e1e1e !important;
+      color: #ffffff !important;
+      border-color: #444 !important;
+    }
+
+    body.tema-oscuro .navbar .nav-link,
+    body.tema-oscuro .navbar .navbar-brand,
+    body.tema-oscuro .sidebar .nav-link {
+      color: <?php echo $colorFuente; ?> !important;
+    }
+
+    body.tema-claro .navbar .nav-link:hover,
+    body.tema-oscuro .navbar .nav-link:hover{
+      background-color: <?php echo $colorNavUp; ?> !important;
+      color: <?php echo $colorFuente; ?> !important;
+      opacity: 0.8;
+    }
+    
+    body.tema-claro .sidebar .nav-link:hover,
+    body.tema-oscuro .sidebar .nav-link:hover {
+      background-color: <?php echo $colorNavLeft; ?> !important;
+      color: <?php echo $colorFuente; ?> !important;
+      opacity: 0.8;
+    }
+
+    body.tema-claro .bi,
+    body.tema-claro .badge,
+    body.tema-oscuro .bi,
+    body.tema-oscuro .badge {
+      color: <?php echo $colorFuente; ?> !important;
+    }
+
+    body.tema-oscuro .search-bar input{
+      background-color: #121212;
+    }
+
+    body.tema-oscuro .search-bar input::placeholder {
+      color: #ffffff;
+      opacity: 1;
+    }
+
+    body.tema-claro .search-bar button,
+    body.tema-oscuro .search-bar button {
+      background-color: <?php echo $colorNavUp; ?> !important;
+      color: <?php echo $colorFuente; ?> !important;
+      border-color: <?php echo $colorNavUp; ?> !important;
+    }
+
+    body.tema-claro .search-bar button:hover,
+    body.tema-oscuro .search-bar button:hover {
+      background-color: <?php echo $colorNavUp; ?> !important;
+      border-color: <?php echo $colorNavUp; ?> !important;
+      color: <?php echo $colorFuente; ?> !important;
+      opacity: 0.8;
+    }
+
+    .btn-primary {
+      background-color: <?php echo $colorNavUp; ?> !important;
+      border-color: <?php echo $colorNavUp; ?> !important;
+      color: <?php echo $colorFuente; ?> !important;
+      font-family: <?php echo $fuenteActual; ?>;
+    }
+
+    .btn-primary:hover {
+      background-color: <?php echo $colorNavUp; ?> !important;
+      opacity: 0.8;
+    }
+  </style>
 </head>
+
 <body class="tema-<?php echo $_SESSION['tema']; ?>">
   <!-- NAVBAR SUPERIOR -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+  <nav class="navbar navbar-expand-lg navbar-light border-bottom">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <img src="../img/<?php echo ($_SESSION['tema'] == 'claro') ? 'logo.png' : 'logoOscuro.png'; ?>" id="logo-img" alt="Logo">
@@ -45,6 +237,7 @@
       </div>
     </div>
   </nav>
+
   <!-- LAYOUT PRINCIPAL -->
   <div class="container-fluid">
     <div class="row">
@@ -74,42 +267,42 @@
           <div class="card-category">
             <img src="../img/ciencia.png" alt="Ciencia">
             <p class="fw-bold">Ciencia</p>
-            <small>Noticias sobre descubrimientos científicos, investigaciones, tecnología espacial, medio ambiente, y estudios innovadores en diversas ramas de la ciencia.</small>
+            <small>Noticias sobre descubrimientos científicos...</small>
           </div>
           <div class="card-category">
             <img src="../img/deportes.png" alt="Deportes">
             <p class="fw-bold">Deportes</p>
-            <small>Actualizaciones sobre eventos deportivos, resultados, análisis, atletas, ligas, campeonatos y todo lo relacionado con el mundo del deporte.</small>
+            <small>Actualizaciones sobre eventos deportivos...</small>
           </div>
           <div class="card-category">
             <img src="../img/entretenimiento.png" alt="Entretenimiento">
             <p class="fw-bold">Entretenimiento</p>
-            <small>Cobertura de temas del mundo del espectáculo como cine, música, televisión, celebridades, eventos culturales y lanzamientos artísticos.</small>
+            <small>Cine, música, televisión y celebridades...</small>
           </div>
           <div class="card-category">
             <img src="../img/general.png" alt="General">
             <p class="fw-bold">General</p>
-            <small>Incluye una variedad de noticias que no pertenecen a una categoría específica; puede abarcar política, sociedad, clima, sucesos y temas de interés público.</small>
+            <small>Noticias generales de interés público...</small>
           </div>
           <div class="card-category">
             <img src="../img/negocios.png" alt="Negocios">
             <p class="fw-bold">Negocios</p>
-            <small>Noticias relacionadas con la economía, finanzas, mercados, empresas, emprendimiento y tendencias comerciales a nivel nacional e internacional.</small>
+            <small>Economía, finanzas y emprendimiento...</small>
           </div>
           <div class="card-category">
             <img src="../img/popular.png" alt="Populares">
             <p class="fw-bold">Populares</p>
-            <small>Noticias destacadas por su alta relevancia, viralidad o interés entre el público. Suelen ser las más vistas, compartidas o comentadas en un periodo reciente.</small>
+            <small>Noticias más vistas y compartidas...</small>
           </div>
           <div class="card-category">
             <img src="../img/salud.png" alt="Salud">
             <p class="fw-bold">Salud</p>
-            <small>Información sobre medicina, bienestar, enfermedades, avances en tratamientos, nutrición, salud pública y temas médicos de actualidad.</small>
+            <small>Medicina, bienestar y nutrición...</small>
           </div>
           <div class="card-category">
-            <img src="../img/tecnologia.png" alt="Negocios">
+            <img src="../img/tecnologia.png" alt="Tecnología">
             <p class="fw-bold">Tecnología</p>
-            <small>Noticias sobre avances tecnológicos, dispositivos, software, inteligencia artificial, redes sociales, ciberseguridad e innovación digital.</small>
+            <small>IA, redes sociales, software y gadgets...</small>
           </div>
         </div>
       </main>

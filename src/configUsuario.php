@@ -4,6 +4,13 @@
   if (!isset($_SESSION['tema'])) {
     $_SESSION['tema'] = 'claro'; // Valor por defecto
   }
+
+  $colorNavUp    = $_SESSION['navUp'] ?? '#ffffff';
+  $colorNavLeft  = $_SESSION['navLeft'] ?? '#f8f9fa';
+  $colorFuente   = $_SESSION['fuenteColor'] ?? '#000000';
+  $colorBoton    = $_SESSION['botonColor'] ?? '#0d6efd';
+  $colorHover    = $_SESSION['hoverColor'] ?? '#0a58ca';
+  $fuenteActual = $_SESSION['fuenteNombre'] ?? 'Arial, Helvetica, sans-serif';
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +21,145 @@
   <title>Configuración - Información Usuario</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="../styles/configUsuario_Estilos.css">
+  <style>
+  body, .nav-link, .navbar-brand, .sidebar .nav-link, .form-label, .btn, p {
+    color: <?php echo $colorFuente; ?> !important;
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  nav.navbar {
+    background-color: <?php echo $colorNavUp; ?> !important;
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  nav.sidebar {
+    background-color: <?php echo $colorNavLeft; ?> !important;
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  .sidebar {
+    min-height: 100vh;
+    border-right: 1px solid #dee2e6;
+    padding-top: 1rem;
+  }
+
+  .content-area {
+    padding: 2rem;
+  }
+
+  .profile-card {
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    background-color: inherit;
+  }
+
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    background-color: transparent;
+  }
+
+  .profile-buttons {
+    margin-top: 1.5rem;
+  }
+
+  .profile-buttons .btn {
+    border-radius: 30px;
+    margin: 0.3rem;
+  }
+
+  .info-labels {
+    text-align: left;
+    margin-top: 1rem;
+  }
+
+  .btn-primary {
+    background-color: <?php echo $colorNavUp; ?> !important;
+    border-color: <?php echo $colorNavUp; ?> !important;
+    color: <?php echo $colorFuente; ?> !important;
+  }
+
+  .btn-primary:hover {
+    background-color: <?php echo $colorNavUp; ?> !important;
+    border-color: <?php echo $colorNavUp; ?> !important;
+    color: <?php echo $colorFuente; ?> !important;
+    opacity: 0.9;
+  }
+
+  .navbar .nav-link:hover,
+  .sidebar .nav-link:hover {
+    color: <?php echo $colorHover; ?> !important;
+  }
+
+  /* Tema Claro */
+  body.tema-claro {
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  /* Tema Oscuro */
+  body.tema-oscuro {
+    background-color: #121212;
+    color: #ffffff;
+  }
+
+  body.tema-oscuro .content-area,
+  body.tema-oscuro .profile-card,
+  body.tema-oscuro .info-labels,
+  body.tema-oscuro .profile-buttons {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border-color: #444 !important;
+  }
+
+  body.tema-oscuro .navbar .nav-link,
+  body.tema-oscuro .navbar .navbar-brand,
+  body.tema-oscuro p,
+  body.tema-oscuro label {
+    color: #ffffff !important;
+  }
+
+  body.tema-oscuro .btn-primary {
+    background-color: <?php echo $colorNavUp; ?> !important;
+    border-color: <?php echo $colorNavUp; ?> !important;
+    color: <?php echo $colorFuente; ?> !important;
+  }
+
+  body.tema-oscuro .btn-primary:hover {
+    background-color: <?php echo $colorNavUp; ?> !important;
+    border-color: <?php echo $colorNavUp; ?> !important;
+    color: <?php echo $colorFuente; ?> !important;
+    opacity: 0.9;
+  }
+
+  #logo-img {
+    height: 100%;
+    max-height: 40px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  @media (max-width: 768px) {
+    .sidebar {
+      border-right: none;
+      border-bottom: 1px solid #dee2e6;
+    }
+
+    .info-labels {
+      text-align: center;
+    }
+  }
+</style>
+
 </head>
 <body class="tema-<?php echo $_SESSION['tema']; ?>">
   <!-- NAVBAR SUPERIOR -->
@@ -71,8 +216,8 @@
 
             <!-- Info -->
             <div class="info-labels">
-              <p><strong>Nombre:</strong></p>
-              <p><strong>Correo:</strong></p>
+              <p><strong>Nombre:</strong> <?php echo $_SESSION['Nombre'] ?></p>
+              <p><strong>Correo:</strong> <?php echo $_SESSION['correo'] ?></p>
               <button class="btn btn-primary" onclick="location.href='configUsuarioDatos.php'">Cambiar Datos</button>
             </div>
           </div>

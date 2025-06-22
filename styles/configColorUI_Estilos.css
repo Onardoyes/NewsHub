@@ -98,37 +98,3 @@
         align-items: center;
       }
     }
-
-/* Tema Claro (ya está por defecto) */
-body.tema-claro {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-/* Tema Oscuro */
-body.tema-oscuro {
-  background-color: #121212;
-  color: #ffffff;
-}
-
-body.tema-oscuro .navbar,
-body.tema-oscuro .sidebar,
-body.tema-oscuro .content-area,
-body.tema-oscuro .color-box,
-body.tema-oscuro .img-small,
-body.tema-oscuro .img-large,
-body.tema-oscuro .placeholder-icon {
-  background-color: #1e1e1e !important;
-  color: #ffffff !important;
-  border-color: #444 !important;
-}
-
-body.tema-oscuro .navbar .nav-link,
-body.tema-oscuro .navbar .navbar-brand {
-  color: #ffffff !important;
-}
-
-body.tema-oscuro .placeholder-icon::before,
-body.tema-oscuro .placeholder-icon::after {
-  border-color: #ffffff;
-}

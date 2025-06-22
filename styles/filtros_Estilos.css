@@ -1,111 +1,29 @@
 .sidebar {
-      min-height: 100vh;
-      border-right: 1px solid #dee2e6;
-      padding-top: 1rem;
-    }
-
-    .content-area {
-      padding: 2rem;
-    }
-
-    .search-bar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .search-bar input {
-      border-radius: 30px;
-      padding-left: 1rem;
-      flex-grow: 1;
-      max-width: 400px;
-    }
-
-    .search-bar button {
-      border-radius: 30px;
-      padding: 0.5rem 1.5rem;
-    }
-
-    .filtros-box {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: flex-start;
-      align-items: center;
-      padding-left: 1rem;
-    }
-
-    @media (max-width: 768px) {
-      .sidebar {
-        border-right: none;
-        border-bottom: 1px solid #dee2e6;
-      }
-
-      .filtros-box {
-        justify-content: center;
-      }
-    }
-
-/* Tema Claro */
-body.tema-claro {
-  background-color: #ffffff;
-  color: #000000;
+  min-height: 100vh;
+  border-right: 1px solid #dee2e6;
+  padding-top: 1rem;
 }
 
-/* Tema Oscuro */
-body.tema-oscuro {
-  background-color: #121212;
-  color: #ffffff;
+.content-area {
+  padding: 2rem;
 }
 
-body.tema-oscuro .navbar,
-body.tema-oscuro .sidebar,
-body.tema-oscuro .content-area,
-body.tema-oscuro .filtros-box,
-body.tema-oscuro .form-check-label,
-body.tema-oscuro input.form-check-input {
-  background-color: #1e1e1e !important;
-  color: #ffffff !important;
-  border-color: #444;
+.filtros-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 1rem;
 }
 
-body.tema-oscuro .navbar .nav-link,
-body.tema-oscuro .navbar .navbar-brand {
-  color: #ffffff !important;
-}
+@media (max-width: 768px) {
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid #dee2e6;
+  }
 
-body.tema-oscuro .navbar .nav-link:hover {
-  color: #cccccc !important;
-}
-
-body.tema-oscuro .form-check-input:checked {
-  background-color: #0d6efd;
-  border-color: #0d6efd;
-}
-
-body.tema-oscuro input[type="text"],
-body.tema-oscuro button {
-  background-color: #2a2a2a;
-  color: #ffffff;
-  border-color: #444;
-}
-
-body.tema-oscuro .btn-outline-primary {
-  color: #ffffff;
-  border-color: #0d6efd;
-}
-
-body.tema-oscuro .btn-outline-primary:hover {
-  background-color: #0d6efd;
-  color: #fff;
-}
-
-#logo-img {
-  height: 100%;
-  max-height: 40px; /* Ajusta este valor según el tamaño del texto */
-  width: auto;
-  object-fit: contain;
+  .filtros-box {
+    justify-content: center;
+  }
 }

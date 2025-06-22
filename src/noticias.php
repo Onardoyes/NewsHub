@@ -4,6 +4,11 @@
   if (!isset($_SESSION['tema'])) {
     $_SESSION['tema'] = 'claro'; // Valor por defecto
   }
+
+  $colorNavUp = $_SESSION['navUp'] ?? '#FFFFFF';
+  $colorNavLeft = $_SESSION['navLeft'] ?? '#FFFFFF';
+  $colorFuente = $_SESSION['fuenteColor'] ?? '#000000';
+  $fuenteActual = $_SESSION['fuenteNombre'] ?? 'Arial, Helvetica, sans-serif';
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +20,109 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="../styles/noticias_Estilos.css">
+  <style>
+  :root {
+    --nav-color-up: <?php echo $colorNavUp; ?>;
+    --nav-color-left: <?php echo $colorNavLeft; ?>;
+    --font-color: <?php echo $colorFuente; ?>;
+  }
+
+  body, small {
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  body.tema-claro {
+    background-color: #ffffff;
+    color: var(--font-color) !important;
+  }
+
+  body.tema-oscuro {
+    background-color: #121212;
+    color: #ffffff;
+  }
+
+  body.tema-oscuro .navbar{
+    background-color: var(--nav-color-up) !important;
+    color: var(--font-color) !important;
+    border-color: #444 !important;
+  }
+
+  body.tema-oscuro .sidebar,
+  body.tema-oscuro .form-check-label,
+  body.tema-oscuro input.form-check-input{
+    background-color: var(--nav-color-left) !important;
+    color: var(--font-color) !important;
+    border-color: #444 !important;
+  }
+
+  body.tema-oscuro .navbar .nav-link,
+  body.tema-oscuro .navbar .navbar-brand {
+    color: var(--font-color) !important;
+  }
+
+  body.tema-oscuro .news-card *:hover {
+    color: #ccc !important;
+  }
+
+  body.tema-oscuro input[type="text"],
+  body.tema-oscuro button {
+    background-color: #2a2a2a;
+    color: var(--font-color) !important;
+    border-color: #444;
+  }
+
+  nav.navbar, .search-bar button {
+    background-color: var(--nav-color-up) !important;
+  }
+
+  nav.sidebar {
+    background-color: var(--nav-color-left) !important;
+  }
+
+  body, .nav-link, .navbar-brand, .sidebar .nav-link, .form-label, .bi {
+    color: var(--font-color) !important;
+  }
+
+  .news-card {
+    border-color: var(--font-color) !important;
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  body.tema-claro .news-card,
+  body.tema-claro .news-card a {
+    color: var(--font-color) !important;
+    border-color: var(--font-color) !important;
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  body.tema-oscuro .news-card,
+  body.tema-oscuro .news-card a {
+    color: #ffffff;
+    border-color: #ffffff !important;
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  .search-bar button:hover {
+    opacity: 0.9;
+  }
+
+  body.tema-oscuro .search-bar input::placeholder {
+    color: #ffffff;
+    opacity: 0.8;
+  }
+
+  .btn-primary {
+    background-color: <?php echo $colorNavUp; ?> !important;
+    border-color: <?php echo $colorNavUp; ?> !important;
+    color: <?php echo $colorFuente; ?> !important;
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  .btn-primary:hover {
+    background-color: <?php echo $colorNavUp; ?> !important;
+    opacity: 0.8;
+  }
+</style>
 </head>
 <body class="tema-<?php echo $_SESSION['tema']; ?>">
   <script src="https://cdn.jsdelivr.net/npm/axios@1.9.0/dist/axios.min.js"></script>

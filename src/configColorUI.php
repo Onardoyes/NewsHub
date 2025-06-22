@@ -4,6 +4,11 @@
   if (!isset($_SESSION['tema'])) {
     $_SESSION['tema'] = 'claro'; // Valor por defecto
   }
+
+  $colorNavUp = $_SESSION['navUp'] ?? '#FFFFFF';
+  $colorNavLeft = $_SESSION['navLeft'] ?? '#FFFFFF';
+  $colorFuente = $_SESSION['fuenteColor'] ?? '#000000';
+  $fuenteActual = $_SESSION['fuenteNombre'] ?? 'Arial, Helvetica, sans-serif';
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +20,98 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="../styles/configColorUI_Estilos.css">
+  <style>
+  :root {
+    --nav-color-up: <?php echo $colorNavUp; ?>;
+    --nav-color-left: <?php echo $colorNavLeft; ?>;
+    --font-color: <?php echo $colorFuente; ?>;
+  }
+
+  body,
+  .navbar,
+  .sidebar{
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  /* Tema Claro */
+  body.tema-claro {
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  /* Tema Oscuro */
+  body.tema-oscuro {
+    background-color: #121212;
+    color: #ffffff;
+  }
+
+  body.tema-oscuro .navbar{
+    background-color: var(--nav-color-up) !important;
+    color: var(--font-color) !important;
+    border-color: #444 !important;
+  }
+
+  body.tema-oscuro .content-area,
+  body.tema-oscuro .img-small,
+  body.tema-oscuro .img-large{
+    background-color: #1e1e1e;
+   }
+
+  body.tema-oscuro .sidebar,
+  body.tema-oscuro .color-box,
+  body.tema-oscuro .placeholder-icon {
+    background-color: var(--nav-color-left) !important;
+    color: var(--font-color) !important;
+    border-color: #444 !important;
+  }
+
+  body.tema-oscuro .navbar .nav-link,
+  body.tema-oscuro .navbar .navbar-brand {
+    color: var(--font-color) !important;
+  }
+
+  body.tema-oscuro .placeholder-icon::before,
+  body.tema-oscuro .placeholder-icon::after {
+    border-color: var(--font-color);
+  }
+
+  /* Colores dinámicos aplicados en ambos temas */
+  nav.navbar, #formColores button[type="submit"]{
+    background-color: var(--nav-color-up) !important;
+  }
+
+  nav.sidebar {
+    background-color: var(--nav-color-left) !important;
+  }
+
+  body, .nav-link, .navbar-brand, .sidebar .nav-link, .form-label, .bi {
+    color: var(--font-color) !important;
+  }
+
+  .img-small, .img-large, .placeholder-icon {
+    border-color: var(--font-color) !important;
+  }
+
+  .color-box {
+    color: var(--font-color) !important;
+  }
+
+  #formColores button[type="submit"]:hover {
+    opacity: 0.9;
+  }
+
+  .btn-primary {
+    background-color: <?php echo $colorNavUp; ?> !important;
+    border-color: <?php echo $colorNavUp; ?> !important;
+    color: <?php echo $colorFuente; ?> !important;
+    font-family: <?php echo $fuenteActual; ?>;
+    }
+
+  .btn-primary:hover {
+    background-color: <?php echo $colorNavUp; ?> !important;
+    opacity: 0.8;
+  }
+</style>
 </head>
 <body class="tema-<?php echo $_SESSION['tema']; ?>">
   <!-- NAVBAR SUPERIOR -->
@@ -60,14 +157,24 @@
 
       <!-- CONTENIDO PRINCIPAL -->
       <main class="col-md-10 content-area">
-        <!-- Imagen pequeña + código de color -->
-        <div class="img-preview text-center">
-          <div class="img-small">
-            <div class="placeholder-icon"></div>
+        <form id="formColores" method="POST" action="../config/guardarColores.php">
+          <div class="mb-3">
+            <label for="colorNavUp" class="form-label">Color Barra de Navegación Superior</label>
+            <input type="color" id="colorNavUp" name="colorNavUp" value="<?php echo htmlspecialchars($_SESSION['navUp'] ?? '#FFFFFF'); ?>" class="form-control form-control-color" />
           </div>
-          <div class="color-box">#FFFFFF</div>
-        </div>
 
+          <div class="mb-3">
+            <label for="colorNavLeft" class="form-label">Color Barra Lateral Izquierda</label>
+            <input type="color" id="colorNavLeft" name="colorNavLeft" value="<?php echo htmlspecialchars($_SESSION['navLeft'] ?? '#FFFFFF'); ?>" class="form-control form-control-color" />
+          </div>
+
+          <div class="mb-3">
+            <label for="colorFuente" class="form-label">Color Fuente</label>
+            <input type="color" id="colorFuente" name="colorFuente" value="<?php echo htmlspecialchars($_SESSION['fuenteColor'] ?? '#000000'); ?>" class="form-control form-control-color" />
+          </div>
+
+          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </form>
         <!-- Imagen grande -->
         <div class="img-large">
           <div class="placeholder-icon"></div>

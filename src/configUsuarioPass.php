@@ -4,6 +4,14 @@
   if (!isset($_SESSION['tema'])) {
     $_SESSION['tema'] = 'claro'; // Valor por defecto
   }
+
+  $colorNavUp = $_SESSION['navUp'] ?? '#FFFFFF';
+  $colorNavLeft = $_SESSION['navLeft'] ?? '#FFFFFF';
+  $colorFuente = $_SESSION['fuenteColor'] ?? '#000000';
+  $colorBoton = $_SESSION['botonColor'] ?? '#0d6efd';
+  $colorHover = $_SESSION['hoverColor'] ?? '#0b5ed7';
+  $fuenteActual = $_SESSION['fuenteNombre'] ?? 'Arial, Helvetica, sans-serif';
+
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +23,95 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="../styles/configUsuarioPass_Estilos.css">
+  <style>
+  /* Colores personalizados */
+  nav.navbar {
+    background-color: <?php echo $colorNavUp; ?> !important;
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  nav.sidebar {
+    background-color: <?php echo $colorNavLeft; ?> !important;
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  body, .nav-link, .navbar-brand, .sidebar .nav-link,
+  .form-label, .form-control, .profile-card{
+    color: <?php echo $colorFuente; ?> !important;
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  .btn-primary {
+    background-color: <?php echo $colorNavUp; ?> !important;
+    color: <?php echo $colorFuente; ?> !important;
+    border-color: <?php echo $colorNavUp; ?> !important;
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.7;
+    color: #FFFFFF;
+  }
+
+  input::placeholder {
+    opacity: 0.8;
+  }
+
+  .form-control {
+    border-radius: 30px;
+    padding-left: 1rem;
+  }
+
+  .btn {
+    border-radius: 30px;
+    padding: 0.5rem 1.5rem;
+  }
+
+  /* Tema Claro */
+  body.tema-claro {
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  body.tema-claro input.form-control,
+  body.tema-claro .form-label {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #ccc;
+  }
+
+  /* Tema Oscuro */
+  body.tema-oscuro {
+    background-color: #121212;
+    color: #ffffff;
+  }
+
+  body.tema-oscuro .navbar{
+    background-color: var(--nav-color-up);
+  }
+
+  body.tema-oscuro .sidebar{
+    background-color: var(--nav-color-left);
+  }
+
+  body.tema-oscuro .content-area,
+  body.tema-oscuro .profile-card,
+  body.tema-oscuro input.form-control,
+  body.tema-oscuro label,
+  body.tema-oscuro .form-label {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border-color: #444 !important;
+  }
+
+  body.tema-oscuro input.form-control::placeholder {
+    color: #ccc;
+  }
+
+  body.tema-oscuro .btn-primary:hover {
+    filter: brightness(1.1);
+  }
+</style>
 </head>
 <body class="tema-<?php echo $_SESSION['tema']; ?>">
   <!-- NAVBAR SUPERIOR -->

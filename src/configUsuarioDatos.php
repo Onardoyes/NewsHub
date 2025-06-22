@@ -4,6 +4,13 @@
   if (!isset($_SESSION['tema'])) {
     $_SESSION['tema'] = 'claro'; // Valor por defecto
   }
+
+  $colorNavUp    = $_SESSION['navUp'] ?? '#ffffff';
+  $colorNavLeft  = $_SESSION['navLeft'] ?? '#f8f9fa';
+  $colorFuente   = $_SESSION['fuenteColor'] ?? '#000000';
+  $colorBoton    = $_SESSION['botonColor'] ?? '#0d6efd';
+  $colorHover    = $_SESSION['hoverColor'] ?? '#0a58ca';
+  $fuenteActual = $_SESSION['fuenteNombre'] ?? 'Arial, Helvetica, sans-serif';
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +21,121 @@
   <title>Configuración - Modifcar Datos de Usuario</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="../styles/configUsuarioDatos_Estilos.css">
+  
+  <style>
+  body, .nav-link, .navbar-brand, .sidebar .nav-link, .form-label, .form-control, .btn {
+    color: <?php echo $colorFuente; ?> !important;
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  nav.navbar {
+    background-color: <?php echo $colorNavUp; ?> !important;
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  nav.sidebar {
+    background-color: <?php echo $colorNavLeft; ?> !important;
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  .sidebar {
+    min-height: 100vh;
+    border-right: 1px solid #dee2e6;
+    padding-top: 1rem;
+  }
+
+  .content-area {
+    padding: 2rem;
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  .profile-card {
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    background-color: inherit;
+  }
+
+  input.form-control {
+    border-radius: 30px;
+    padding-left: 1rem;
+    background-color: transparent;
+    border: 1px solid #ccc;
+  }
+
+  input.form-control::placeholder {
+    opacity: 0.7;
+  }
+
+  .btn {
+    border-radius: 30px;
+    padding: 0.5rem 1.5rem;
+  }
+
+  .btn-primary {
+    background-color: <?php echo $colorNavUp; ?> !important;
+    border-color: <?php echo $colorNavUp; ?> !important;
+    color: <?php echo $colorFuente; ?> !important;
+  }
+
+  .btn-primary:hover {
+    background-color: <?php echo $colorNavUp; ?> !important;
+    border-color: <?php echo $colorNavUp; ?> !important;
+    color: <?php echo $colorFuente; ?> !important;
+    opacity: 0.9;
+  }
+
+  .navbar .nav-link:hover,
+  .sidebar .nav-link:hover {
+    color: <?php echo $colorHover; ?> !important;
+  }
+
+  /* Tema Claro */
+  body.tema-claro {
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  body.tema-claro input.form-control {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #ccc;
+  }
+
+  /* Tema Oscuro */
+  body.tema-oscuro {
+    background-color: #121212;
+    color: #ffffff;
+  }
+
+  body.tema-oscuro .content-area,
+  body.tema-oscuro .profile-card,
+  body.tema-oscuro input.form-control,
+  body.tema-oscuro .form-label {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border-color: #444 !important;
+  }
+
+  body.tema-oscuro input.form-control::placeholder {
+    color: #cccccc;
+  }
+
+  #logo-img {
+    height: 100%;
+    max-height: 40px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  @media (max-width: 768px) {
+    .sidebar {
+      border-right: none;
+      border-bottom: 1px solid #dee2e6;
+    }
+  }
+</style>
 </head>
 <body class="tema-<?php echo $_SESSION['tema']; ?>">
   <!-- NAVBAR SUPERIOR -->

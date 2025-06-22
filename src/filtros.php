@@ -4,6 +4,11 @@
   if (!isset($_SESSION['tema'])) {
     $_SESSION['tema'] = 'claro'; // Valor por defecto
   }
+
+  $colorNavUp = $_SESSION['navUp'] ?? '#FFFFFF';
+  $colorNavLeft = $_SESSION['navLeft'] ?? '#FFFFFF';
+  $colorFuente = $_SESSION['fuenteColor'] ?? '#000000';
+  $fuenteActual = $_SESSION['fuenteNombre'] ?? 'Arial, Helvetica, sans-serif';
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +20,134 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/litera/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="../styles/filtros_Estilos.css">
+  <style>
+  :root {
+    --nav-color-up: <?= $colorNavUp ?>;
+    --nav-color-left: <?= $colorNavLeft ?>;
+    --font-color: <?= $colorFuente ?>;
+    --hover-btn: #<?= ltrim($colorNavUp, '#') ?>cc;
+  }
+
+  body, .nav-link, .navbar-brand, .form-check-label, .bi {
+    color: var(--font-color) !important;
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  nav.navbar {
+    background-color: var(--nav-color-up) !important;
+  }
+
+  nav.sidebar {
+    background-color: var(--nav-color-left) !important;
+  }
+
+  .search-bar input[type="text"] {
+    border-radius: 30px;
+    padding-left: 1rem;
+    flex-grow: 1;
+    max-width: 400px;
+    background-color: transparent;
+  }
+
+  .search-bar input[type="text"]::placeholder {
+    opacity: 0.6;
+  }
+
+  .search-bar button {
+    border-radius: 30px;
+    padding: 0.5rem 1.5rem;
+    background-color: var(--nav-color-up);
+    color: var(--font-color);
+    border: none;
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  .search-bar button:hover {
+    background-color: var(--hover-btn);
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  .btn-outline-primary {
+    color: var(--font-color);
+    border-color: #0d6efd;
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  .btn-outline-primary:hover {
+    background-color: #0d6efd;
+    color: #fff;
+    font-family: <?php echo $fuenteActual; ?>;
+  }
+
+  body.tema-oscuro {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  body.tema-oscuro .navbar{
+    background-color: var(--nav-color-up);
+  }
+
+  body.tema-oscuro .sidebar{
+    background-color: var(--nav-color-left);
+  }
+
+  body.tema-oscuro .filtros-box,
+  body.tema-oscuro .content-area {
+    background-color: #1e1e1e !important;
+    border-color: #444;
+  }
+
+  body.tema-oscuro input[type="text"] {
+    background-color: #2a2a2a;
+    border-color: #444;
+  }
+
+  body.tema-claro .form-check-input:checked,
+  body.tema-oscuro .form-check-input:checked {
+    background-color: var(--nav-color-up);
+    border-color: #0d6efd;
+  }
+
+  #logo-img {
+    height: 100%;
+    max-height: 40px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  /* Texto de content-area */
+  body.tema-oscuro .content-area {
+    color: white !important;
+  }
+
+  /* Placeholder del input en modo oscuro */
+  body.tema-oscuro .search-bar input::placeholder {
+    color: white !important;
+    opacity: 0.8; /* opcional: hace que el blanco no sea tan fuerte */
+  }
+
+  /* También asegúrate que el input no sobrescriba el color del texto */
+  body.tema-oscuro .search-bar input {
+    color: white !important;
+  }
+
+  body.tema-oscuro .form-check-label {
+    color: white !important;
+  }
+
+  .btn-primary {
+      background-color: <?php echo $colorNavUp; ?> !important;
+      border-color: <?php echo $colorNavUp; ?> !important;
+      color: <?php echo $colorFuente; ?> !important;
+      font-family: <?php echo $fuenteActual; ?>;
+    }
+
+    .btn-primary:hover {
+      background-color: <?php echo $colorNavUp; ?> !important;
+      opacity: 0.8;
+    }
+</style>
 </head>
 <body class="tema-<?php echo $_SESSION['tema']; ?>">
   <!-- NAVBAR SUPERIOR -->
@@ -63,13 +196,12 @@
       <main class="col-md-10 content-area">
         <!-- BARRA DE BÚSQUEDA -->
         <div class="d-flex justify-content-center my-3">
-          <div class="d-flex align-items-center" style="width: 100%; max-width: 600px;">
-            <input type="text" class="form-control me-2" placeholder="Buscabas un filtro en especial?">
-            <button class="btn btn-primary me-2">Buscar</button>
-            <button class="btn btn-outline-primary">Aplicar Filtros</button>
+          <div class="search-bar d-flex justify-content-center my-3">
+            <input type="text" class="form-control me-3" placeholder="Buscabas un filtro en especial?">
+            <button class="btn">Buscar</button>
+            <button class="btn btn-outline-primary ms-2">Aplicar Filtros</button>
           </div>
         </div>
-
         <!-- FILTROS -->
         <div class="filtros-box">
           <div class="form-check">
