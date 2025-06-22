@@ -183,7 +183,7 @@
       <main class="col-md-10 content-area">
         <div class="profile-card mx-auto col-lg-8">
             <h5 class="fw-bold mb-4">Modificar Datos del Usuario</h5>
-            <form class="form-container">
+            <form class="form-container" id="formUsuario">
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre de Usuario</label>
                 <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre de usuario">
@@ -198,7 +198,28 @@
       </main>
     </div>
   </div>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('formUsuario').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value.trim();
+      const correo = document.getElementById('correo').value.trim();
+
+      const res = await fetch('../config/modifUsuario.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `nombre=${encodeURIComponent(nombre)}&correo=${encodeURIComponent(correo)}`
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        alert("Datos actualizados con éxito.");
+        window.location.href = "configUsuario.php";
+      } else {
+        alert("Error: " + data.error);
+      }
+    });
+    </script>
 </body>
 </html>

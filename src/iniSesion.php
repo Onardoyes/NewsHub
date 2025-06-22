@@ -1,3 +1,7 @@
+<?php
+  $error = isset($_GET['error']) ? (int)$_GET['error'] : 0;
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,14 +15,22 @@
   <div class="login-container">
     <div class="login-box">
       <h4 class="mb-4 text-center">Inicio Sesión</h4>
+
+      <!-- Mostrar mensaje de error -->
+      <?php if ($error === 1): ?>
+        <div class="alert alert-danger text-center" role="alert">
+          Usuario o contraseña incorrectos.
+        </div>
+      <?php endif; ?>
+
       <form action="../config/login.php" method="POST">
         <div class="mb-3">
           <label for="username" class="form-label">Usuario</label>
-          <input type="text" class="form-control" id="username" name="usuario" placeholder="Nombre de Usuario">
+          <input type="text" class="form-control" id="username" name="usuario" placeholder="Nombre de Usuario" required>
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Contraseña</label>
-          <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
+          <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required>
         </div>
         <div class="mb-3 form-check d-flex justify-content-between align-items-center">
           <div>

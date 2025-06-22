@@ -174,7 +174,41 @@
       </main>
     </div>
   </div>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.querySelector(".form-container").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const actual = document.getElementById("pass1").value.trim();
+      const nueva = document.getElementById("pass2").value.trim();
+
+      if (!actual || !nueva) {
+        alert("Por favor, completa ambos campos.");
+        return;
+      }
+
+      try {
+        const res = await fetch("../config/modifPassUsuario.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: `actual=${encodeURIComponent(actual)}&nueva=${encodeURIComponent(nueva)}`
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          alert("Contraseña actualizada correctamente.");
+          window.location.href = "configUsuario.php";
+        } else {
+          alert("Error: " + data.error);
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Error al procesar la solicitud.");
+      }
+    });
+</script>
 </body>
 </html>

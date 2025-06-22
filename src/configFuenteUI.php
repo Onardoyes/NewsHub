@@ -61,6 +61,12 @@ $fuentes = [
       background-color: <?php echo $colorNavUp; ?> !important;
     }
 
+    .navbar .nav-link:hover{
+      background-color: <?php echo $colorNavUp; ?> !important;
+      color: <?php echo $colorFuente; ?> !important;
+      opacity: 0.8;
+    }
+
     .sidebar {
       background-color: <?php echo $colorNavLeft; ?> !important;
       min-height: 100vh;
