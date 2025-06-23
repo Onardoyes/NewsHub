@@ -194,41 +194,95 @@
 
       <!-- CONTENIDO PRINCIPAL -->
       <main class="col-md-10 content-area">
-        <!-- BARRA DE BÚSQUEDA -->
-        <div class="d-flex justify-content-center my-3">
-          <div class="search-bar d-flex justify-content-center my-3">
-            <input type="text" class="form-control me-3" placeholder="Buscabas un filtro en especial?">
-            <button class="btn">Buscar</button>
-            <button class="btn btn-outline-primary ms-2">Aplicar Filtros</button>
+        <!-- FORMULARIO DE FILTROS -->
+        <form method="GET" action="noticias.php">
+          <!-- Fila 1: Barra de búsqueda + botón -->
+          <div class="d-flex justify-content-center my-3">
+            <div class="search-bar d-flex justify-content-center align-items-center gap-3 flex-wrap">
+              <input type="text" name="busqueda" class="form-control" placeholder="Buscabas un filtro en especial?" style="max-width: 400px;">
+              <button class="btn btn-outline-primary" type="submit">Aplicar Filtros</button>
+            </div>
           </div>
-        </div>
-        <!-- FILTROS -->
-        <div class="filtros-box">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="filtro1">
-            <label class="form-check-label" for="filtro1">Filtro</label>
+
+          <!-- Fila 2: Filtros adicionales -->
+          <div class="d-flex justify-content-center mb-3 flex-wrap gap-3">
+            <select name="language" class="form-select" style="max-width: 180px;">
+              <option value="">Idioma</option>
+              <option value="es">Español</option>
+              <option value="en">Inglés</option>
+              <option value="fr">Francés</option>
+            </select>
+
+            <select name="sortBy" class="form-select" style="max-width: 180px;">
+              <option value="">Ordenar por</option>
+              <option value="publishedAt">Fecha</option>
+              <option value="popularity">Popularidad</option>
+              <option value="relevancy">Relevancia</option>
+            </select>
+
+            <input type="date" name="from" class="form-control" style="max-width: 180px;">
+            <input type="date" name="to" class="form-control" style="max-width: 180px;">
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="filtro2">
-            <label class="form-check-label" for="filtro2">Filtro</label>
+
+          <!-- Filtros adicionales con checkboxes -->
+          <div class="d-flex justify-content-center">
+            <div class="filtros-box d-flex flex-row flex-wrap gap-4 justify-content-center">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="filtro1" name="favoritos" value="1">
+                <label class="form-check-label" for="filtro1">Favoritos</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="filtro2" name="recientes" value="1">
+                <label class="form-check-label" for="filtro2">Recientes</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="filtro3" name="ultimomomento" value="1">
+                <label class="form-check-label" for="filtro3">Último Momento</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="filtro4" name="populares" value="1">
+                <label class="form-check-label" for="filtro4">Populares</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="filtro5" name="elmundo" value="1">
+                <label class="form-check-label" for="filtro5">El Mundo</label>
+              </div>
+            </div>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="filtro3">
-            <label class="form-check-label" for="filtro3">Filtro</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="filtro4">
-            <label class="form-check-label" for="filtro4">Filtro</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="filtro5">
-            <label class="form-check-label" for="filtro5">Filtro</label>
-          </div>
-        </div>
+        </form>
       </main>
     </div>
   </div>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Filtros definidos
+    const filtros = [
+      { id: 'filtro1', key: 'filtroPopulares' },
+      { id: 'filtro2', key: 'filtroRecientes' },
+      { id: 'filtro3', key: 'filtroUltimoMomento' },
+      { id: 'filtro4', key: 'filtroFavoritos' },
+      { id: 'filtro5', key: 'filtroElMundo' }
+    ];
+
+    // Restaurar estado de cada filtro desde localStorage
+    filtros.forEach(f => {
+      const check = document.getElementById(f.id);
+      const valor = localStorage.getItem(f.key);
+      if (check && valor === 'true') {
+        check.checked = true;
+      }
+    });
+
+    // Guardar los filtros al hacer clic en "Aplicar Filtros"
+    document.querySelector('.btn-outline-primary').addEventListener('click', () => {
+      filtros.forEach(f => {
+        const check = document.getElementById(f.id);
+        localStorage.setItem(f.key, check.checked);
+      });
+
+      // Redirigir a noticias.php
+      window.location.href = 'noticias.php';
+    });
+  </script>
 </body>
 </html>
