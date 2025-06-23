@@ -16,12 +16,11 @@
   $stmt->close();
 
   $colorNavUp    = $_SESSION['navUp'] ?? '#ffffff';
-$colorNavLeft  = $_SESSION['navLeft'] ?? '#f8f9fa';
-$colorFuente   = $_SESSION['fuenteColor'] ?? '#000000';
-$colorBoton    = $_SESSION['botonColor'] ?? '#0d6efd';
-$colorHover    = $_SESSION['hoverColor'] ?? '#0a58ca';
-$fuenteActual = $_SESSION['fuenteNombre'] ?? 'Arial, Helvetica, sans-serif';
-
+  $colorNavLeft  = $_SESSION['navLeft'] ?? '#f8f9fa';
+  $colorFuente   = $_SESSION['fuenteColor'] ?? '#000000';
+  $colorBoton    = $_SESSION['botonColor'] ?? '#0d6efd';
+  $colorHover    = $_SESSION['hoverColor'] ?? '#0a58ca';
+  $fuenteActual  = $_SESSION['fuenteNombre'] ?? 'Arial, Helvetica, sans-serif';
 ?>
 
 <!DOCTYPE html>
@@ -61,10 +60,10 @@ $fuenteActual = $_SESSION['fuenteNombre'] ?? 'Arial, Helvetica, sans-serif';
 
   .theme-option {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
     gap: 1rem;
-    flex-wrap: wrap;
+    margin-bottom: 2rem;
   }
 
   .theme-image {
@@ -187,7 +186,6 @@ $fuenteActual = $_SESSION['fuenteNombre'] ?? 'Arial, Helvetica, sans-serif';
     object-fit: cover;
     border-radius: 24px;
   }
-
 </style>
 </head>
 <body class="<?php echo $temaUI === 'oscuro' ? 'tema-oscuro' : 'tema-claro'; ?>">
@@ -219,6 +217,7 @@ $fuenteActual = $_SESSION['fuenteNombre'] ?? 'Arial, Helvetica, sans-serif';
       </div>
     </div>
   </nav>
+
   <!-- LAYOUT PRINCIPAL -->
   <div class="container-fluid">
     <div class="row">
@@ -228,7 +227,7 @@ $fuenteActual = $_SESSION['fuenteNombre'] ?? 'Arial, Helvetica, sans-serif';
           <li class="nav-item"><a class="nav-link" href="configUsuario.php">Datos Usuario</a></li>
           <li class="nav-item"><a class="nav-link" href="configColorUI.php">Color UI</a></li>
           <li class="nav-item"><a class="nav-link active" href="#">Temas</a></li>
-          <li class="nav-item"><a class="nav-link active" href="configFuenteUI.php">Fuente</a></li>
+          <li class="nav-item"><a class="nav-link" href="configFuenteUI.php">Fuente</a></li>
         </ul>
       </nav>
 
@@ -248,7 +247,7 @@ $fuenteActual = $_SESSION['fuenteNombre'] ?? 'Arial, Helvetica, sans-serif';
         <!-- Opción Oscuro -->
         <div class="theme-option">
           <div class="theme-image">
-            <img src="../img/temaOscuro.jpg" alt="Tema Claro" class="theme-preview-img">
+            <img src="../img/temaOscuro.jpg" alt="Tema Oscuro" class="theme-preview-img">
           </div>
           <div class="form-check">
             <input class="form-check-input" type="radio" name="temaUI" id="temaOscuro" <?php if($_SESSION['tema'] == 'oscuro'){?>checked<?php }?>>

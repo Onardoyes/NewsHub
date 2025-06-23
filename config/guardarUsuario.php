@@ -1,17 +1,21 @@
 <?php
     require_once('../BD/conexion.php');
 
-    $usuario = $_POST['usuario'];
+    $usuario  = $_POST['usuario'];
     $password = $_POST['password'];
-    $correo = $_POST['correo'];
+    $correo   = $_POST['correo'];
 
-    $fotoPerfil = NULL;
-    $recordarInicio = false;
-    $navColorUp = '#FFFFFF';
-    $navColorLeft = '#FFFFFF';
-    $tema = 'Claro';
-    $fuente = 1;
-    $fuenteColor = '#000000';
+    // 🔐 Encriptar la contraseña antes de guardarla
+    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
+    // Valores por defecto
+    $fotoPerfil       = NULL;
+    $recordarInicio   = false;
+    $navColorUp       = '#FFFFFF';
+    $navColorLeft     = '#FFFFFF';
+    $tema             = 'claro'; // debe coincidir con lo que usas en el resto del sistema
+    $fuente           = 1;
+    $fuenteColor      = '#000000';
 
     $stmt = $conexion->prepare("
         INSERT INTO usuario (
@@ -21,9 +25,9 @@
     ");
 
     $stmt->bind_param(
-        "ssssisssis",  // Tipos: s=string, i=int
+        "ssssisssis",  // Tipos: s = string, i = integer
         $usuario,
-        $password,
+        $passwordHash,
         $correo,
         $fotoPerfil,
         $recordarInicio,
@@ -35,12 +39,11 @@
     );
 
     if ($stmt->execute()) {
-        echo "Usuario registrado correctamente.";
         header("Location: ../src/iniSesion.php");
+        exit;
     } else {
         echo "Error al registrar el usuario: " . $stmt->error;
-        header("Location: ../src/registrarUsuario.php");
+        // header("Location: ../src/registrarUsuario.php"); // Solo redirige si no hay error de salida
     }
 
     $stmt->close();
-?>
