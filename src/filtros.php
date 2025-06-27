@@ -255,34 +255,42 @@
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Filtros definidos
-    const filtros = [
-      { id: 'filtro1', key: 'filtroPopulares' },
-      { id: 'filtro2', key: 'filtroRecientes' },
-      { id: 'filtro3', key: 'filtroUltimoMomento' },
-      { id: 'filtro4', key: 'filtroFavoritos' },
-      { id: 'filtro5', key: 'filtroElMundo' }
-    ];
+  document.querySelector('.btn-outline-primary').addEventListener('click', function (e) {
+    e.preventDefault(); // Evita el envío automático del formulario
 
-    // Restaurar estado de cada filtro desde localStorage
-    filtros.forEach(f => {
-      const check = document.getElementById(f.id);
-      const valor = localStorage.getItem(f.key);
-      if (check && valor === 'true') {
-        check.checked = true;
+    const url = new URL(window.location.origin + '/NewsHub/src/noticias.php');
+    const form = document.querySelector('form');
+
+    // Agregar texto de búsqueda
+    const busqueda = form.querySelector('input[name="busqueda"]').value;
+    if (busqueda) url.searchParams.set('busqueda', busqueda);
+
+    // Agregar select de idioma
+    const language = form.querySelector('select[name="language"]').value;
+    if (language) url.searchParams.set('language', language);
+
+    // Agregar orden
+    const sortBy = form.querySelector('select[name="sortBy"]').value;
+    if (sortBy) url.searchParams.set('sortBy', sortBy);
+
+    // Agregar fechas
+    const from = form.querySelector('input[name="from"]').value;
+    const to = form.querySelector('input[name="to"]').value;
+    if (from) url.searchParams.set('from', from);
+    if (to) url.searchParams.set('to', to);
+
+    // Agregar checkboxes como banderas
+    const filtros = ['favoritos', 'recientes', 'ultimomomento', 'populares', 'elmundo'];
+    filtros.forEach(nombre => {
+      const check = document.querySelector(`input[name="${nombre}"]`);
+      if (check.checked) {
+        url.searchParams.set(nombre, '1');
       }
     });
 
-    // Guardar los filtros al hacer clic en "Aplicar Filtros"
-    document.querySelector('.btn-outline-primary').addEventListener('click', () => {
-      filtros.forEach(f => {
-        const check = document.getElementById(f.id);
-        localStorage.setItem(f.key, check.checked);
-      });
-
-      // Redirigir a noticias.php
-      window.location.href = 'noticias.php';
-    });
-  </script>
+    // Redirige a noticias.php con filtros
+    window.location.href = url.toString();
+  });
+</script>
 </body>
 </html>
